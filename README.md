@@ -17,6 +17,22 @@ recents. This extension fixes that.
 - Pin / unpin inline with the pin icon on each row.
 - Pins are stored **per workspace**.
 - Configurable recents length (`pinnedTaskRunner.maxRecent`, default 5).
+- Reads each task's own `icon`/`color`/`detail` straight from `.vscode/tasks.json`
+  (the same fields VS Code uses for the task's terminal tab icon) and renders
+  them in the picker, e.g.:
+
+  ```jsonc
+  {
+    "label": "Build",
+    "type": "shell",
+    "command": "npm run build",
+    "icon": { "id": "tools", "color": "terminal.ansiBlue" },
+    "detail": "Compiles the TypeScript sources",
+  }
+  ```
+
+  Tasks without an `icon` fall back to a section-appropriate default (pin /
+  history / gear).
 
 ## Keybinding
 
@@ -24,18 +40,3 @@ Ships bound to a `cmd+r cmd+r` chord. To match the exact chord you use, open
 Keyboard Shortcuts, search `pinnedTaskRunner.run`, and rebind. To fully replace
 the built-in, also rebind `workbench.action.tasks.runTask` to something else (or
 remove it).
-
-## Develop
-
-```bash
-npm install
-npm run compile      # or: npm run watch
-# then press F5 in VS Code -> "Run Extension"
-```
-
-## Package a local .vsix
-
-```bash
-npm run package      # produces pinned-task-runner-0.0.1.vsix
-code --install-extension pinned-task-runner-0.0.1.vsix
-```

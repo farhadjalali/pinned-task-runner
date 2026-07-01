@@ -2,7 +2,7 @@
   "name": "pinned-task-runner",
   "displayName": "Pinned Task Runner",
   "description": "Run Task picker with real pinning — pinned tasks are lifted out of the recents list instead of being duplicated.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "FeriJayDev",
   "license": "MIT",
   "icon": "icon.png",
@@ -55,11 +55,14 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "npx @vscode/vsce package",
-    "install": "code --install-extension pinned-task-runner-0.0.1.vsix --force"
+    "install": "code --install-extension pinned-task-runner-0.1.1.vsix --force"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@types/vscode": "^1.85.0",
     "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1"
   }
 }
