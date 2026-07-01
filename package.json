@@ -55,6 +55,8 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "npx @vscode/vsce package",
+    "patch": "npx @vscode/vsce publish patch",
+    "minor": "npx @vscode/vsce publish minor",
     "install": "code --install-extension pinned-task-runner-0.1.1.vsix --force"
   },
   "devDependencies": {
