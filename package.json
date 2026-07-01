@@ -1,0 +1,61 @@
+{
+  "name": "pinned-task-runner",
+  "displayName": "Pinned Task Runner",
+  "description": "Run Task picker with real pinning — pinned tasks are lifted out of the recents list instead of being duplicated.",
+  "version": "0.0.1",
+  "publisher": "farhad",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pinnedTaskRunner.run",
+        "title": "Run Task (Pinned)",
+        "category": "Tasks"
+      },
+      {
+        "command": "pinnedTaskRunner.clearRecent",
+        "title": "Clear Recently Used Tasks",
+        "category": "Tasks"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "pinnedTaskRunner.run",
+        "key": "cmd+r cmd+r",
+        "mac": "cmd+r cmd+r",
+        "when": "editorTextFocus || !editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Pinned Task Runner",
+      "properties": {
+        "pinnedTaskRunner.maxRecent": {
+          "type": "number",
+          "default": 5,
+          "description": "How many recently-run tasks to keep in the picker (pinned tasks never count toward this)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "install": "code --install-extension pinned-task-runner-0.0.1.vsix --force"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
